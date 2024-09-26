@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
 import './App.css'
-import Header from './Components/Header/Header'
-import CarouselEffect from './Components/Carousel/CarouselEffect'
+
+import Routing from './Router'
+
 
 function App() {
  
   return (
     <>
-   <Header/>
-   <CarouselEffect/>
+    <Routing/>
     </>
-  )
+  );
 }
 
 export default App
