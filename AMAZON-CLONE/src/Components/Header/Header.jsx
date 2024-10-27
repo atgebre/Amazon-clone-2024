@@ -6,8 +6,8 @@ import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
-// import { useContext } from "react";
-// import { auth } from "../../Utility/firebase";
+
+import { auth } from "../../Utility/firebase";
 
 const Header = () => {
   const [{ user, basket }, dispatch] = useContext(DataContext);
@@ -44,7 +44,7 @@ const Header = () => {
                 <option value="">All</option>
               </select>
               <input type="text" name="" id="" placeholder="search product" />
-              <BsSearch size={25} />
+              <BsSearch size={38} />
             </div>
             {/* right side link */}
 
@@ -60,11 +60,21 @@ const Header = () => {
               </Link>
 
               {/* three components */}
-              <Link to="/">
+              <Link to={!user && "/auth"}>
                 <div>
-                  <p>Hello, Sign In</p>
-                  <span>Account & Lists</span>
+                  {user ? (
+                    <>
+                      <p>Hello {user?.email?.split("@")[0]}</p>
+                      <span onClick={()=>auth.SignOut()}>Sign Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p>Hello, Sign In</p>
+                      <span>Account & Lists</span>
+                    </>
+                  )}
                 </div>
+
               </Link>
               {/* orders */}
               <Link to="/orders">
