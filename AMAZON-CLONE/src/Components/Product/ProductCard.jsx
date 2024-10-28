@@ -8,7 +8,7 @@ import { DataContext } from '../DataProvider/DataProvider'
 import {Type} from '../../Utility/action.type'
 
 
-function ProductCard({ product, flex, renderDesc }) {
+function ProductCard({ product, flex,renderAdd, renderDesc }) {
   const { image, title, id, rating, price, description } = product;
   console.log(product);
 
@@ -49,7 +49,7 @@ function ProductCard({ product, flex, renderDesc }) {
           {/* price */}
           <CurrencyFormat amount={price} />
         </div>
-        {
+        {renderAdd &&
           <button className={classes.button}
             onClick={addToCart}>
             add to cart
