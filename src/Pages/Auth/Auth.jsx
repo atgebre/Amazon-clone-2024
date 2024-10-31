@@ -13,7 +13,7 @@ function Auth(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-   //console.log(password,email)
+  
     const [{ user }, dispatch] = useContext(DataContext);
     // console.log(user);
      const navigate = useNavigate();
@@ -74,6 +74,18 @@ const authHandler = async (e) => {
       </Link>
       <div className={classes.login__container}>
         <h1>Sign In </h1>
+        {navStateData?.state?.msg && (
+          <small
+            style={{
+              padding: "5px",
+              textAlign: "center",
+              color: "red",
+              fontWeight: "bold",
+            }}
+          >
+            {navStateData?.state?.msg}
+          </small>
+        )}
         <form action="">
           <div>
             <label htmlFor="email">Email</label>
